@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innocent Seral — Digital Marketer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #0b1628;
+    --dark: #e8d9b5;
+    --accent: #c9a84c;
+    --accent-light: #1a2a45;
+    --muted: #8fa3c0;
+    --card-bg: #0f1f38;
+    --border: #1e3256;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(11,22,40,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--dark);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; padding-top: 5rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 0;
+    max-width: 1280px; margin: 0 auto; padding: 6rem 3rem 3rem;
+  }
+  .hero-text { padding-right: 4rem; }
+  .hero-eyebrow {
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    font-weight: 900; line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 400; font-style: italic;
+    color: var(--muted); margin-bottom: 2rem;
+  }
+  .hero-desc {
+    font-size: 1rem; line-height: 1.8; color: var(--muted);
+    max-width: 480px; margin-bottom: 2.5rem;
+  }
+  .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: white;
+    padding: 0.85rem 2rem; border-radius: 2px;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #a8421a; transform: translateY(-1px); }
+  .btn-outline {
+    border: 1.5px solid var(--dark); color: var(--dark);
+    padding: 0.85rem 2rem; border-radius: 2px;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--dark); color: var(--cream); }
+
+  /* ── PHOTO FRAME ── */
+  .hero-visual {
+    position: relative; display: flex; justify-content: center; align-items: center;
+  }
+  .photo-frame {
+    position: relative; width: 360px; height: 430px;
+  }
+  .photo-bg-block {
+    position: absolute; bottom: -18px; right: -18px;
+    width: 100%; height: 100%;
+    background: var(--accent-light);
+    border: 2px solid var(--accent);
+    border-radius: 2px;
+  }
+  .photo-img-wrapper {
+    position: relative; width: 100%; height: 100%;
+    border-radius: 2px; overflow: hidden;
+    border: 2px solid var(--border);
+    background: var(--border);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+  .photo-img-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .photo-placeholder {
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    color: var(--muted);
+  }
+  .photo-placeholder svg { opacity: 0.4; }
+  .photo-placeholder p { font-size: 0.8rem; text-align: center; opacity: 0.7; }
+  .photo-badge {
+    position: absolute; bottom: 24px; left: -32px;
+    background: var(--dark); color: var(--cream);
+    padding: 0.75rem 1.25rem; border-radius: 2px;
+    font-size: 0.78rem; letter-spacing: 0.05em;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .photo-badge strong { display: block; font-size: 1.1rem; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 3rem; max-width: 1280px; margin: 0 auto; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700;
+    line-height: 1.15;
+  }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--border); max-width: 1280px; margin: 0 auto; }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .skill-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 1.75rem 1.5rem; border-radius: 2px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--accent);
+  }
+  .skill-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-3px); }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+  .skill-name { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .skill-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── EXPERIENCE ── */
+  .experience-list { display: flex; flex-direction: column; gap: 2.5rem; }
+  .exp-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 2.5rem; border-radius: 2px;
+    display: grid; grid-template-columns: 200px 1fr; gap: 2rem;
+  }
+  .exp-meta { }
+  .exp-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .exp-period {
+    font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500;
+  }
+  .exp-role {
+    font-size: 1.15rem; font-weight: 500; margin-bottom: 1rem;
+  }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .exp-points li {
+    font-size: 0.92rem; color: var(--muted); line-height: 1.65;
+    padding-left: 1.2rem; position: relative;
+  }
+  .exp-points li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.85rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+  .project-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 2px; overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-4px); }
+  .project-header {
+    background: var(--dark); color: var(--cream);
+    padding: 1.75rem 2rem;
+  }
+  .project-tag {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent-light); margin-bottom: 0.6rem;
+  }
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+  }
+  .project-body { padding: 1.75rem 2rem; }
+  .project-points { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .project-points li {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.6;
+    padding-left: 1.1rem; position: relative;
+  }
+  .project-points li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+  /* ── TOOLS ── */
+  .tools-wrap { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .tool-pill {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 0.55rem 1.25rem; border-radius: 100px;
+    font-size: 0.85rem; font-weight: 500; color: var(--dark);
+    transition: all 0.2s;
+  }
+  .tool-pill:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* ── CERTS ── */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .cert-item {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem; border-radius: 2px;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .cert-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+  .cert-name { font-size: 0.88rem; font-weight: 500; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .contact-intro {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    font-weight: 700; line-height: 1.25; margin-bottom: 1.5rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; color: var(--dark);
+    font-size: 0.95rem; transition: color 0.2s;
+    padding: 1rem 1.25rem;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-link-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-link-value { font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1280px; margin: 0 auto;
+    font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* ── UPLOAD PHOTO UI (hidden but kept for structure) ── */
+  .upload-hint {
+    margin-top: 0.6rem; font-size: 0.75rem; color: var(--muted);
+    text-align: center;
+  }
+  #photoUpload { display: none; }
+  .upload-btn {
+    margin-top: 0.8rem; cursor: pointer;
+    display: inline-block;
+    background: var(--accent); color: white;
+    padding: 0.5rem 1.1rem; border-radius: 2px;
+    font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-name { animation-delay: 0.2s; }
+  .hero-title { animation-delay: 0.3s; }
+  .hero-desc { animation-delay: 0.4s; }
+  .hero-cta-group { animation-delay: 0.5s; }
+  .hero-visual { animation: fadeUp 0.8s 0.4s ease both; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 2rem; }
+    .hero-text { padding-right: 0; }
+    .hero-visual { display: none; }
+    .exp-card { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">IS</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Digital Marketer </p>
+    <h1 class="hero-name">Innocent<span> Seral </span></h1>
+    <p class="hero-title">Where Data Meets Creativity</p>
+    <p class="hero-desc">
+      A dedicated Digital Marketing Professional with expertise in SEO, SEM, Google Ads, Meta Ads, and content strategy — backed by nearly 2 years of corporate experience as a Technology Analyst at Infosys. I turn insights into impactful marketing results.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#projects" class="btn-outline">View Projects</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="photo-frame">
+      <div class="photo-bg-block"></div>
+      <div class="photo-img-wrapper" id="photoWrapper">
+        <!-- The image 'seral.jpg' will automatically appear here -->
+        <img src="seral.jpg" alt="Innocent Seral " style="width:100%; height:100%; object-fit:cover; display:block;" id="staticImage">
+      </div>
+      <div class="photo-badge">
+        <strong>1y 10m</strong>
+        Corporate Experience
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <p class="section-label">What I Do</p>
+    <h2 class="section-title">Core Competencies</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">Search Engine Optimization</div>
+      <div class="skill-desc">On-page & off-page SEO, site audits, keyword strategy, and technical analysis.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📢</div>
+      <div class="skill-name">Google Ads / SEM</div>
+      <div class="skill-desc">PPC campaign creation, targeting, and performance optimization.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📘</div>
+      <div class="skill-name">Meta Ads</div>
+      <div class="skill-desc">Facebook Ads — campaign creation, audience targeting, creative performance.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Analytics & Reporting</div>
+      <div class="skill-desc">Google Analytics, Search Console, data-driven decisions and reporting.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Social Media Marketing</div>
+      <div class="skill-desc">Content planning, scheduling, brand visibility, and audience engagement.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">SQL & Data Analysis</div>
+      <div class="skill-desc">Oracle PL/SQL, query optimization, procedures, functions, and reporting.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <p class="section-label">Work History</p>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="experience-list">
+
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-company">SLA Institute</div>
+        <div class="exp-period">Currently Pursuing</div>
+      </div>
+      <div>
+        <div class="exp-role">Digital Marketing Intern</div>
+        <ul class="exp-points">
+          <li>Undergoing practical training in Meta Ads — campaign creation, targeting, and performance optimization.</li>
+          <li>Technical website analysis using SEO browser extensions and tools to identify on-page and off-page opportunities.</li>
+          <li>Gaining hands-on experience with keyword analysis, site audits, and competitor research.</li>
+          <li>Developing foundational skills in digital advertising, SEO analysis, and data-driven marketing strategies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-company">Shain Digital<br>Marketing Agency</div>
+        <div class="exp-period">1 Month · 2025</div>
+      </div>
+      <div>
+        <div class="exp-role">Digital Marketing Intern</div>
+        <ul class="exp-points">
+          <li>Gained practical experience in digital marketing and social media management.</li>
+          <li>Created and posted image-based content across multiple social media platforms.</li>
+          <li>Assisted the marketing team in planning and executing social media strategies for brand promotion.</li>
+          <li>Developed skills in content creation and branding using Canva.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-company">Infosys Limited</div>
+        <div class="exp-period">2022 – 2024</div>
+      </div>
+      <div>
+        <div class="exp-role">Technology Analyst</div>
+        <ul class="exp-points">
+          <li>Hands-on expertise in Oracle PL/SQL for procedures, functions, views, packages, triggers, indexes, query optimization, and reporting.</li>
+          <li>Worked on business requirements, process improvements, and client coordination, ensuring smooth delivery of solutions.</li>
+          <li>Managed change requests, fixes, and new implementations aligned with organizational goals.</li>
+          <li>Recognized for analytical ability, clear communication, and adaptability across diverse business environments.</li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-tag">SEO · Analytics · Web Design</div>
+        <div class="project-name">ALL WORKS Digital Marketing Agency — Website</div>
+      </div>
+      <div class="project-body">
+        <ul class="project-points">
+          <li>Designed and developed a personal website showcasing digital marketing services and portfolio, hosted on Netlify.</li>
+          <li>Implemented SEO optimization — meta titles, descriptions, and keywords to improve ranking and visibility.</li>
+          <li>Integrated Google Search Console and Google Analytics for performance tracking and SEO insights.</li>
+          <li>Applied core digital marketing practices including content strategy and keyword optimization.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-tag">Social Media · Content · Branding</div>
+        <div class="project-name">Social Media Marketing — Shain Digital Marketing Agency</div>
+      </div>
+      <div class="project-body">
+        <ul class="project-points">
+          <li>Managed social media marketing by creating and posting image-based content to improve audience engagement.</li>
+          <li>Planned and scheduled content strategically to enhance brand visibility.</li>
+          <li>Hands-on experience in content creation and brand promotion using Canva.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOOLS & CERTS -->
+<section>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+    <div>
+      <div class="section-header">
+        <p class="section-label">Tech Stack</p>
+        <h2 class="section-title">Tools</h2>
+      </div>
+      <div class="tools-wrap">
+        <span class="tool-pill">Google Search Console</span>
+        <span class="tool-pill">Google Analytics</span>
+        <span class="tool-pill">Ahrefs</span>
+        <span class="tool-pill">SEMrush</span>
+        <span class="tool-pill">Ubersuggest</span>
+        <span class="tool-pill">Screaming Frog</span>
+        <span class="tool-pill">Canva</span>
+        <span class="tool-pill">WordPress</span>
+        <span class="tool-pill">Google Keyword Planner</span>
+        <span class="tool-pill">Oracle PL/SQL</span>
+      </div>
+    </div>
+    <div>
+      <div class="section-header">
+        <p class="section-label">Credentials</p>
+        <h2 class="section-title">Certifications</h2>
+      </div>
+      <div class="certs-grid" style="grid-template-columns: 1fr;">
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">SEMrush Academy Certification</div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">HubSpot Academy Certification</div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">Google Analytics Certification</div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">SLA Institute — Digital Marketing</div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">Social Media Marketing Certification</div></div>
+        <div class="cert-item"><div class="cert-dot"></div><div class="cert-name">HubSpot Academy SEM Certification</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <p class="section-label">Let's Connect</p>
+      <h2 class="contact-intro">Ready to drive results for your brand?</h2>
+      <p style="color: var(--muted); line-height: 1.8; font-size: 0.95rem;">
+        I'm available for immediate joining and excited to contribute creativity, precision, and data-driven strategy to your team. Let's build something impactful together.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a href="tel:+918939433083" class="contact-link">
+        <div class="contact-link-icon">📞</div>
+        <div>
+          <div class="contact-link-label">Phone</div>
+          <div class="contact-link-value">+91 89394 33083</div>
+        </div>
+      </a>
+      <a href="mailto:innoseral@gmail.com" class="contact-link">
+        <div class="contact-link-icon">✉️</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-value">innoseral@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/innocent-seral" target="_blank" class="contact-link">
+        <div class="contact-link-icon">🔗</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-value">linkedin.com/in/innocent-seral</div>
+        </div>
+      </a>
+      <a href="#" class="contact-link">
+        <div class="contact-link-icon">📍</div>
+        <div>
+          <div class="contact-link-label">Location</div>
+          <div class="contact-link-value">Guindy, Chennai – 600 032</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Innocent Seral J. — Digital Marketer</span>
+  <span>Chennai · Available for Immediate Joining</span>
+</footer>
+
+<!-- Simple script ensures photo displays from file (no upload required) -->
+<script>
+  // Ensure the image from "seral.jpg" is loaded. 
+  // The static img is already in the DOM. No extra actions needed, but keep for consistency.
+  // If the image fails to load for any reason, we do nothing else.
+  const photoImg = document.getElementById('staticImage');
+  if (photoImg) {
+    photoImg.onerror = function() {
+      // If the image is missing, we can show a subtle placeholder but it's not needed.
+      console.log("Image seral.jpg not found, ensure file exists in same directory.");
+    };
+  }
+</script>
+
+</body>
+</html>
